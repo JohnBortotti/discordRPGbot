@@ -56,93 +56,25 @@ module.exports = {
     }
  
     if (message.content === '!rpg dados') {
-      channel.send(`Dados disponíveis: d4, d8, d6, d10, d12, d20`);
-      channel.send(`Use: **!rpg rolar d(dado)**`);
+      channel.send(`Use: **!rpg rolar (dado)**`);
     }
 
-    if (message.content === '!rpg rolar d4') {
-      channel.send(`**${message.member.user.username}** está rolando um **D4**`);
-      const rolagem = Math.floor(Math.random() * 4) + 1;
-      if (rolagem === 4) {
-        channel.send(`**${message.member.user.username}** conseguiu um **acerto crítico**`);
-        channel.send(`Resultado: ` + `**${rolagem}**`);
-      } else if (rolagem === 1) {
-        channel.send(`**${message.member.user.username}** conseguiu uma **falha crítica**`);
-        channel.send(`Resultado: ` + `**${rolagem}**`);
+    if (message.content.startsWith('!rpg rolar')) {
+      if (!args[1]) {
+        channel.send(`Use: **!rpg rolar (dado)**`);
       } else {
-        channel.send(`Resultado: ` + `**${rolagem}**`);
-      }
-    }
-
-    if (message.content === '!rpg rolar d6') {
-      channel.send(`**${message.member.user.username}** está rolando um **D6**`);
-      const rolagem = Math.floor(Math.random() * 6) + 1;
-      if (rolagem === 6) {
-        channel.send(`**${message.member.user.username}** conseguiu um **acerto crítico**`);
-        channel.send(`Resultado: ` + `**${rolagem}**`);
-      } else if (rolagem === 1) {
-        channel.send(`**${message.member.user.username}** conseguiu uma **falha crítica**`);
-        channel.send(`Resultado: ` + `**${rolagem}**`);
-      } else {
-        channel.send(`Resultado: ` + `**${rolagem}**`);
-      }
-    }
-
-    if (message.content === '!rpg rolar d8') {
-      channel.send(`**${message.member.user.username}** está rolando um **D8**`);
-      const rolagem = Math.floor(Math.random() * 8) + 1;
-      if (rolagem === 8) {
-        channel.send(`**${message.member.user.username}** conseguiu um **acerto crítico**`);
-        channel.send(`Resultado: ` + `**${rolagem}**`);
-      } else if (rolagem === 1) {
-        channel.send(`**${message.member.user.username}** conseguiu uma **falha crítica**`);
-        channel.send(`Resultado: ` + `**${rolagem}**`);
-      } else {
-        channel.send(`Resultado: ` + `**${rolagem}**`);
-      }
-    }
-
-    if (message.content === '!rpg rolar d10') {
-      channel.send(`**${message.member.user.username}** está rolando um **D10**`);
-      const rolagem = Math.floor(Math.random() * 10) + 1;
-      if (rolagem === 10) {
-        channel.send(`**${message.member.user.username}** conseguiu um **acerto crítico**`);
-        channel.send(`Resultado: ` + `**${rolagem}**`);
-      } else if (rolagem === 1) {
-        channel.send(`**${message.member.user.username}** conseguiu uma **falha crítica**`);
-        channel.send(`Resultado: ` + `**${rolagem}**`);
-      } else {
-        channel.send(`Resultado: ` + `**${rolagem}**`);
-      }
-    }
-
-    if (message.content === '!rpg rolar d12') {
-      channel.send(`**${message.member.user.username}** está rolando um **D12**`);
-      const rolagem = Math.floor(Math.random() * 12) + 1;
-      if (rolagem === 12) {
-        channel.send(`**${message.member.user.username}** conseguiu um **acerto crítico**`);
-        channel.send(`Resultado: ` + `**${rolagem}**`);
-      } else if (rolagem === 1) {
-        channel.send(`**${message.member.user.username}** conseguiu uma **falha crítica**`);
-        channel.send(`Resultado: ` + `**${rolagem}**`);
-      } else {
-        channel.send(`Resultado: ` + `**${rolagem}**`);
-      }
-    }
-
-
-    if (message.content === '!rpg rolar d20') {
-      channel.send(`**${message.member.user.username}** está rolando um **D20**`);
-      const rolagem = Math.floor(Math.random() * 20) + 1
-      if (rolagem === 20) {
-        channel.send(`**${message.member.user.username}** conseguiu um **acerto crítico**`);
-        channel.send(`Resultado: ` + `**${rolagem}**`);
-      } else if (rolagem === 1) {
-        channel.send(`**${message.member.user.username}** conseguiu uma **falha crítica**`);
-        channel.send(`Resultado: ` + `**${rolagem}**`);
-      } else {
-        channel.send(`Resultado: ` + `**${rolagem}**`);
-      }
+          const rolagem = Math.floor(Math.random() * args[1]) + 1;
+          channel.send(`**${message.member.user.username}** está rolando um **D${args[1]}**`);
+          if (rolagem === parseInt(args[1])) {
+            channel.send(`**${message.member.user.username}** conseguiu um **acerto crítico**`);
+            channel.send(`Resultado: **${rolagem}**`);
+          } else if (rolagem === 1) {
+              channel.send(`**${message.member.user.username}** conseguiu uma **falha crítica**`);
+              channel.send(`Resultado: **${rolagem}**`);
+            } else {
+                channel.send(`Resultado: **${rolagem}**`);
+              }
+        }
     }
   }
 }
