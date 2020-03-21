@@ -20,7 +20,11 @@ client.on('message', (message) => {
   const channel = message.channel
 
   if (message.content === '!rpg comandos') {
-    channel.send(`Comandos disponíveis: comandos, regras, anunciar_mesa, dados`)
+    channel.send(`Comandos disponíveis: comandos, creditos, regras, anunciar_mesa, dados`)
+  }
+
+  if (message.content === '!rpg creditos') {
+    channel.send(`Bot desenvolvido por: https://github.com/JohnBortotti`)
   }
 
   if (message.content === '!rpg regras') { 
