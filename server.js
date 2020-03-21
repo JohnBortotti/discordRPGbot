@@ -17,7 +17,7 @@ client.on('guildMemberAdd', member => {
 });
 
 client.on('message', (message) => {
-  const channel = client.channels.get("690572473749471265");
+  const channel = message.channel
 
   if (message.content === '!rpg regras') { 
     channel.send(`**REGRAS:** `);
@@ -121,4 +121,4 @@ client.on('message', (message) => {
 
 });
 
-client.login("NjkwNTcxNjA5OTk1NjA4MDY0.XnT3MA.sm_X0HTMWw8-t4LSaOwli6wvKSw");
+client.login("NjkwNTcxNjA5OTk1NjA4MDY0.XnV4Wg.1AvqbNHp74Gyk0kU7DsmwVSDZEI");
