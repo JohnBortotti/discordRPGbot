@@ -19,4 +19,4 @@ client.on('guildMemberAdd', member => {
 
 client.on('message', mensagem.onMessage)
 
-client.login("KEY");
+client.login("APPKEY");

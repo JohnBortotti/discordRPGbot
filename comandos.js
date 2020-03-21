@@ -1,10 +1,11 @@
 module.exports = {
   onMessage: (message) => {
 
-    const channel = message.channel
+    const channel = message.channel;
+    const [command, ...args] = message.content.slice(1).split(" ");
 
     if (message.content === '!rpg comandos') {
-      channel.send(`Comandos disponíveis: comandos, creditos, regras, anunciar_mesa, dados`)
+      channel.send(`Comandos disponíveis: comandos, creditos, regras, anunciar_mesa, iniciar_mesa, dados`)
     }
 
     if (message.content === '!rpg creditos') {
@@ -41,9 +42,19 @@ module.exports = {
    | Numero de vagas:                           | 
    |____________________________________________| 
    ${"```"} `)
+      message.author.send("ei, não esquece de colocar entre ``` pro seu texto sair identado")
     }
-
-
+    
+    if (message.content.startsWith('!rpg iniciar_mesa')) {
+      if (!args[1]) {
+        channel.send('**Obrigatório o nome da mesa**')
+      } else { 
+          const data = new Date().toDateString();
+          channel.send(`**${message.member.user.username}** está iniciando a mesa **${args[1]}**`)  
+          message.author.send(`Olá Mestre, você está iniciando a mesa: **${args[1]}**, ${data}, respeite as regras e divirta-se`);
+        }
+    }
+ 
     if (message.content === '!rpg dados') {
       channel.send(`Dados disponíveis: d4, d8, d6, d10, d12, d20`);
       channel.send(`Use: **!rpg rolar d(dado)**`);
