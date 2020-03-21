@@ -19,6 +19,10 @@ client.on('guildMemberAdd', member => {
 client.on('message', (message) => {
   const channel = message.channel
 
+  if (message.content === '!rpg comandos') {
+    channel.send(`Comandos disponíveis: comandos, regras, anunciar_mesa, dados`)
+  }
+
   if (message.content === '!rpg regras') { 
     channel.send(`**REGRAS:** `);
     channel.send(`1-Conteúdo off-game apenas no **geral**`);
@@ -26,8 +30,31 @@ client.on('message', (message) => {
     channel.send(`3-Não usar comandos do bot fora das **mesas**, exceto o **!rpg regras**`);
     channel.send(`4-Sem flood de conteúdo/comando`)
     channel.send(`5-Apenas membros com o cargo **Mestre** podem mestrar sessões`);
+    channel.send(`use: **!rpg comandos**`);
     channel.send(`**Bom jogo a todos**`);
   }
+
+  if (message.content === '!rpg anunciar_mesa') {
+    message.author.send(` ${"```"}
+    Olá mestre, copie o template a seguir, edite
+    com as infos da sua mesa e cole no '#anuncio-mesas'
+    ____________________________________________  
+   |                                            | 
+   | Nome da mesa:                              | 
+   |--------------------------------------------| 
+   | Tema:                                      | 
+   |--------------------------------------------| 
+   | Sistema:                                   | 
+   |--------------------------------------------| 
+   | Data/Horario:                              | 
+   |--------------------------------------------| 
+   | Voz ou Chat:                               | 
+   |--------------------------------------------| 
+   | Numero de vagas:                           | 
+   |____________________________________________| 
+   ${"```"} `)
+  }
+
 
   if (message.content === '!rpg dados') { 
     channel.send(`Dados disponíveis: d4, d8, d6, d10, d12, d20`);
