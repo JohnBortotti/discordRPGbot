@@ -44,17 +44,22 @@ module.exports = {
           channel.send('**Obrigatório o nome da mesa**')
           channel.send('Use: **!rpg iniciar_mesa nome_da_mesa**');
         } else { 
-          const data = new Date().toDateString();
-          channel.send(`@everyone **${message.member.user.username}** está iniciando a mesa **${args[1]}**`)  
-          message.author.send(`${"```"}Olá Mestre, você está iniciando a mesa: ${args[1]} - data: ${data}, respeite as regras e divirta-se${"```"}`);
-        }
+            const data = new Date().toDateString();
+            channel.send(`**Limpando chat**`)
+            let i;
+            for (i = 0; i < 20; i++) {
+              channel.send(`.`)  
+            }
+            channel.send(`@everyone **${message.member.user.username}** está iniciando a mesa **${args[1]}**`)  
+            message.author.send(`${"```"}Olá Mestre, você está iniciando a mesa: ${args[1]} - data: ${data}, respeite as regras e divirta-se${"```"}`);
+          }
       } else {
         channel.send("Você precisa ter o cargo **Mestre**");
       }
     }
  
     if (message.content === '!rpg dados') {
-      channel.send(`Use: **!rpg rolar (dado)**`);
+      channel.send(`Use: **!rpg rolar (número)**`);
     }
 
     if (message.content.startsWith('!rpg rolar')) {

@@ -13,7 +13,7 @@ client.on('guildMemberAdd', member => {
 
   member.addRole('690595308480233533');
   channel.send(` **${member.user.username}** foi adicionado como jogador`);
-  channel.send(`**Leia as REGRAS**`);
+  channel.send(`**Leia as** ${"#"}regras`);
   channel.send("--------------------------------//--------------------------------");
 });
 
