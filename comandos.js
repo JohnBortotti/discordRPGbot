@@ -24,35 +24,44 @@ module.exports = {
     }
 
     if (message.content === '!rpg anunciar_mesa') {
-      message.author.send(` ${"```"}
-    Olá mestre, copie o template a seguir, edite
-    com as infos da sua mesa e cole no '#anuncio-mesas'
-    ____________________________________________  
-   |                                            | 
-   | Nome da mesa:                              | 
-   |--------------------------------------------| 
-   | Tema:                                      | 
-   |--------------------------------------------| 
-   | Sistema:                                   | 
-   |--------------------------------------------| 
-   | Data/Horario:                              | 
-   |--------------------------------------------| 
-   | Voz ou Chat:                               | 
-   |--------------------------------------------| 
-   | Numero de vagas:                           | 
-   |____________________________________________| 
-   ${"```"} `)
-      message.author.send("ei, não esquece de colocar entre ``` pro seu texto sair identado")
+      if (message.member.roles.some(role => role.name === 'Mestre'))  {
+        message.author.send(` ${"```"}
+        Olá mestre, copie o template a seguir, edite
+        com as infos da sua mesa e cole no '#anuncio-mesas'
+      ______________________________________________  
+      |                                            | 
+      | Nome da mesa:                              | 
+      |--------------------------------------------| 
+      | Tema:                                      | 
+      |--------------------------------------------| 
+      | Sistema:                                   | 
+      |--------------------------------------------| 
+      | Data/Horario:                              | 
+      |--------------------------------------------| 
+      | Voz ou Chat:                               | 
+      |--------------------------------------------| 
+      | Numero de vagas:                           | 
+      |____________________________________________| 
+      ${"```"} `)
+      message.author.send("ei, não esquece de colocar entre ``` pro seu texto sair identado");
+    } else {
+      channel.send("Você precisa ter o cargo **Mestre**");
     }
+  }
     
     if (message.content.startsWith('!rpg iniciar_mesa')) {
-      if (!args[1]) {
-        channel.send('**Obrigatório o nome da mesa**')
-      } else { 
+      if (message.member.roles.some(role => role.name === 'Mestre')) {
+        if (!args[1]) {
+          channel.send('**Obrigatório o nome da mesa**')
+          channel.send('Use: **!rpg iniciar_mesa nome_da_mesa**');
+        } else { 
           const data = new Date().toDateString();
-          channel.send(`**${message.member.user.username}** está iniciando a mesa **${args[1]}**`)  
-          message.author.send(`Olá Mestre, você está iniciando a mesa: **${args[1]}**, ${data}, respeite as regras e divirta-se`);
+          channel.send(`@everyone **${message.member.user.username}** está iniciando a mesa **${args[1]}**`)  
+          message.author.send(`${"```"}Olá Mestre, você está iniciando a mesa: ${args[1]} - data: ${data}, respeite as regras e divirta-se${"```"}`);
         }
+      } else {
+        channel.send("Você precisa ter o cargo **Mestre**");
+      }
     }
  
     if (message.content === '!rpg dados') {
