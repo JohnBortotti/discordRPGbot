@@ -5,22 +5,11 @@ module.exports = {
     const [command, ...args] = message.content.slice(1).split(" ");
 
     if (message.content === '!rpg comandos') {
-      channel.send(`Comandos disponíveis: comandos, creditos, regras, anunciar_mesa, iniciar_mesa, dados`)
+      channel.send(`Comandos disponíveis: comandos, creditos, anunciar_mesa, iniciar_mesa, dados`)
     }
 
     if (message.content === '!rpg creditos') {
       channel.send(`Bot desenvolvido por: https://github.com/JohnBortotti`)
-    }
-
-    if (message.content === '!rpg regras') {
-      channel.send(`**REGRAS:** `);
-      channel.send(`1-Conteúdo off-game apenas no **geral**`);
-      channel.send(`2-Se você não faz parte da mesa não interfira no jogo dos outros`);
-      channel.send(`3-Não usar comandos do bot fora das **mesas**, exceto o **!rpg regras**`);
-      channel.send(`4-Sem flood de conteúdo/comando`)
-      channel.send(`5-Apenas membros com o cargo **Mestre** podem mestrar sessões`);
-      channel.send(`use: **!rpg comandos**`);
-      channel.send(`**Bom jogo a todos**`);
     }
 
     if (message.content === '!rpg anunciar_mesa') {
