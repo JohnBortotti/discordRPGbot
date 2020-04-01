@@ -1,14 +1,18 @@
 # discordRPGbot
-
-Bot pra ajudar a jogar rpg pelo discord
+Bot para auxiliar partidas de rpg pelo discord
  
-## :computer: Running the server
+## Running the server
  ```
  node server.js
  ```
 
-
-
-
-## :mailbox_with_mail: License 
-Bot desenvolvido para fins de estudo. Livre para uso
+# Comandos
+O Bot possui os seguintes comandos
+```
+* !rpg comandos
+* !rpg creditos
+* !rpg anunciar_mesa
+* !rpg iniciar_mesa
+* !rpg dados
+* !rpg rolar
+```
