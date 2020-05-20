@@ -1,6 +1,11 @@
 # discordRPGbot
 Bot para auxiliar partidas de rpg pelo discord
  
+ ## Installing 
+ ```
+ npm install
+ ```
+ 
 ## Running the server
  ```
  node server.js
